@@ -95,54 +95,58 @@ namespace Jamal2020
                     Console.WriteLine("O mês escolhido é " + mes + ".");
                 break;
                 case 3:
-                    System.out.println("Digite a palavra oculta: ");
-                    String palavraOculta = scanner.next();
+                    Console.WriteLine("Digite a palavra oculta: ");
+                    String palavraOculta = Console.ReadLine();
 
-                    System.out.println("Digite a quantidade de tentativas: ");
-                    int tentativas = scanner.nextInt();
+                    Console.WriteLine("Digite a quantidade de tentativas: ");
+                    int tentativas = Convert.ToInt32(Console.ReadLine());
 
                     String resposta;
                     int contadorTentativas = 0;
-                    int valorPasso = Math.abs(tentativas/3); // Salva a quantidade de saltos entre cada parte do corpo
+                    int valorPasso = Math.Abs(tentativas/3); // Salva a quantidade de saltos entre cada parte do corpo
                     int contadorPartes = tentativas; // Inicia o contador de exibição das partes com o número de tentativas
                     int contadorExibicao = 0; // Cria uma variável de controle para a exibição das partes
                     for(int i=0; i < tentativas; i++){
-                    System.out.println("Qual a palavra oculta?");
-                    resposta = scanner.next();
-                    contadorTentativas = (tentativas - (i+1));
-                    if (palavraOculta.equals(resposta)){ // COmpara a resposta e caso seja igual para a repetição
-                    System.out.println("Parabéns você acertou!!");
+                        Console.WriteLine("Qual a palavra oculta?");
+                        resposta = Console.ReadLine();
+                        contadorTentativas = (tentativas - (i+1));
+                    if (Equals(palavraOculta,resposta)){ // COmpara a resposta e caso seja igual para a repetição
+                        Console.WriteLine("Parabéns você acertou!!");
                     break;
                     } else {
-                // Avalia partes do corpo
-                if (tentativas < 3){ // Se tiver menos que três chances, deve mostrar mais de uma parte do corpo
-                    if (contadorTentativas == 1){
-                        System.out.println("xxx Cabeça e Tronco xxx");
+                        // Avalia partes do corpo
+                        if (tentativas < 3){ // Se tiver menos que três chances, deve mostrar mais de uma parte do corpo
+                            if (contadorTentativas == 1){
+                                Console.WriteLine("xxx Cabeça e Tronco xxx");
                     } else {
-                        System.out.println("xxx Membros xxx");
+                        Console.WriteLine("xxx Membros xxx");
                     }
-                } else {
-                    // Avalia se já 'erro' a quantidade de vezes do salto entre partes
-                    if((contadorPartes - valorPasso) == contadorTentativas){
-                        if(contadorExibicao == 0) {
-                            System.out.println("xxx Cabeça xxx");
+                    } else {
+                        // Avalia se já 'erro' a quantidade de vezes do salto entre partes
+                        if((contadorPartes - valorPasso) == contadorTentativas)
+                        {
+                            if(contadorExibicao == 0) {
+                                Console.WriteLine("xxx Cabeça xxx");
                         } else if (contadorExibicao == 1){
-                            System.out.println("xxx Tronco xxx");
+                            Console.WriteLine("xxx Tronco xxx");
                         } else {
-                            System.out.println("xxx Membros xxx");
+                            Console.WriteLine("xxx Membros xxx");
                         }
                         contadorExibicao++;
                         contadorPartes -= valorPasso;
                     }
-                }
+                    }
 
-                if(contadorTentativas == 0){
-                    System.out.println("Você foi enforcado!");
-                } else {
-                    System.out.println("Errou, você tem mais " + contadorTentativas);
-                }
-                }
-                }
+                    if(contadorTentativas == 0)
+                    {
+                        Console.WriteLine("Você foi enforcado!");
+                    }   
+                    else 
+                    {
+                        Console.WriteLine("Errou, você tem mais " + contadorTentativas);
+                    }
+                    }
+                    }
                 break;
                 case 4:
                 break;
